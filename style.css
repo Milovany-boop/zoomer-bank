@@ -620,32 +620,213 @@ body {
 }
 
 /* Мобильное меню */
-.mobile-menu-button {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-primary);
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
-}
-
+/* Улучшенная мобильная оптимизация */
 @media (max-width: 768px) {
-    .mobile-menu-button {
-        display: block;
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 5rem 1rem 2rem;
+        gap: 2rem;
+        min-height: auto;
     }
     
-    .nav-menu.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--bg-secondary);
-        padding: 1rem;
-        border-top: 1px solid var(--neon-pink);
+    .hero-title {
+        font-size: 2.2rem; /* Уменьшили для мобильных */
+        line-height: 1.2;
+        word-break: break-word;
     }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin: 0 auto;
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .card-preview {
+        width: 100%;
+        max-width: 320px;
+        height: 200px;
+        margin: 0 auto;
+    }
+    
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .footer-info {
+        text-align: center;
+    }
+    
+    .logo-image {
+        height: 45px;
+    }
+    
+    .about-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .feature-card {
+        padding: 1.5rem 1rem;
+        margin: 0 0.5rem;
+    }
+    
+    .cta-button {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+    
+    /* Исправление навигации для мобильных */
+    .nav-container {
+        padding: 0.8rem 1rem;
+    }
+    
+    /* Улучшение отступов */
+    .hero-content {
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8rem;
+        padding: 0 0.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    .cta-button {
+        padding: 0.9rem 1.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .about-title {
+        font-size: 1.6rem;
+    }
+    
+    .logo-image {
+        height: 40px;
+    }
+    
+    .nav-container {
+        padding: 0.7rem;
+    }
+    
+    .card-preview {
+        max-width: 280px;
+        height: 175px;
+    }
+    
+    .about-section {
+        padding: 2rem 0.5rem;
+    }
+    
+    .footer {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .feature-card {
+        padding: 1.2rem 0.8rem;
+        margin: 0 0.3rem;
+    }
+    
+    .feature-icon {
+        font-size: 2.5rem;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Особые исправления для очень маленьких экранов */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 1.6rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .card-preview {
+        max-width: 260px;
+        height: 160px;
+    }
+    
+    .logo-image {
+        height: 35px;
+    }
+}
+
+/* Исправление viewport для мобильных */
+@viewport {
+    width: device-width;
+    zoom: 1.0;
+}
+
+/* Предотвращение масштабирования на iOS */
+@-ms-viewport {
+    width: device-width;
+}
+
+/* Улучшение скролла на iOS */
+html {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Исправление высоты на мобильных */
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* Улучшение отображения на iOS Safari */
+.hero::before,
+.hero::after {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 /* Пульсирующие анимации */

@@ -534,4 +534,83 @@
     .card-option span {
         font-size: 0.9rem;
     }
+}/* Мобильная оптимизация формы */
+@media (max-width: 768px) {
+    .card-form-container {
+        padding: 1.5rem 1rem;
+        margin: 0.5rem;
+        width: 95%;
+        max-width: none;
+    }
+    
+    .card-designs {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .card-preview-small {
+        width: 160px;
+        height: 100px;
+    }
+    
+    .step-title {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-progress {
+        margin-bottom: 2rem;
+    }
+    
+    .progress-step {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+    
+    .form-navigation {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .form-btn {
+        padding: 1rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-input {
+        padding: 0.8rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-form-container {
+        padding: 1rem 0.8rem;
+    }
+    
+    .card-preview-small {
+        width: 140px;
+        height: 87px;
+    }
+    
+    .card-option {
+        padding: 1rem 0.5rem;
+    }
+    
+    .card-option span {
+        font-size: 0.9rem;
+    }
+    
+    .step-title {
+        font-size: 1.1rem;
+    }
+    
+    .form-input {
+        padding: 0.7rem 0.8rem;
+        font-size: 0.9rem;
+    }
 }
