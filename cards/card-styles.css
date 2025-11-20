@@ -1,0 +1,537 @@
+/* cards/card-styles.css */
+:root {
+    --neon-pink: #ff00ff;
+    --neon-green: #00ff00;
+    --neon-blue: #00ffff;
+    --neon-purple: #ff00ff;
+    --bg-primary: #0a0a12;
+    --bg-secondary: #1a1a2a;
+}
+
+.card-form-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 18, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.card-form-container {
+    background: var(--bg-secondary);
+    border: 2px solid var(--neon-pink);
+    border-radius: 20px;
+    padding: 2.5rem;
+    width: 95%;
+    max-width: 600px; /* Увеличили максимальную ширину */
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 
+        0 0 50px rgba(255, 0, 255, 0.3),
+        inset 0 0 30px rgba(255, 0, 255, 0.1);
+    position: relative;
+    animation: formAppear 0.5s ease-out;
+}
+
+@keyframes formAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.close-form {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--neon-pink);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-form:hover {
+    background: rgba(255, 0, 255, 0.1);
+    text-shadow: 0 0 15px var(--neon-pink);
+    transform: scale(1.1) rotate(90deg);
+}
+
+.form-step {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.form-step.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.step-title {
+    color: var(--neon-green);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
+}
+
+/* Прогресс бар */
+.form-progress {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.form-progress::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--neon-green) 0%, 
+        rgba(0, 255, 0, 0.3) 33%, 
+        rgba(0, 255, 0, 0.3) 66%, 
+        rgba(0, 255, 0, 0.3) 100%);
+    transform: translateY(-50%);
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.progress-step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 3px solid rgba(255, 0, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.progress-step.active {
+    border-color: var(--neon-green);
+    background: var(--neon-green);
+    color: var(--bg-primary);
+    box-shadow: 0 0 20px var(--neon-green);
+    transform: scale(1.1);
+}
+
+.progress-step.completed {
+    border-color: var(--neon-green);
+    background: var(--neon-green);
+    color: var(--bg-primary);
+    box-shadow: 0 0 15px var(--neon-green);
+}
+
+.card-designs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem; /* Увеличили расстояние между картами */
+    margin-bottom: 2.5rem;
+}
+
+.card-option {
+    background: var(--bg-primary);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 2rem 1rem; /* Увеличили внутренние отступы */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* Добавили расстояние между картинкой и текстом */
+}
+
+.card-option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.card-option:hover::before {
+    left: 100%;
+}
+
+.card-option:hover {
+    border-color: var(--neon-blue);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
+}
+
+.card-option.selected {
+    border-color: var(--neon-green);
+    box-shadow: 
+        0 0 30px rgba(0, 255, 0, 0.3),
+        inset 0 0 20px rgba(0, 255, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.card-option.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--neon-green);
+    color: var(--bg-primary);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 0 15px var(--neon-green);
+    font-size: 1.2rem;
+}
+
+/* УВЕЛИЧЕННЫЕ КАРТЫ */
+.card-preview-small {
+    width: 200px; /* Увеличили ширину */
+    height: 125px; /* Увеличили высоту */
+    background: linear-gradient(135deg, #2a2a4a, #1a1a2a);
+    border-radius: 15px; /* Увеличили радиус */
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.1); /* Увеличили границу */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; /* Увеличили отступы */
+}
+
+.card-option:hover .card-preview-small {
+    transform: scale(1.08); /* Увеличили масштаб при наведении */
+    border-color: var(--neon-blue);
+}
+
+.card-option.selected .card-preview-small {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6); /* Увеличили тень */
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Сохраняем пропорции */
+    border-radius: 10px; /* Увеличили радиус */
+    transition: transform 0.3s ease;
+}
+
+.card-option:hover .card-image {
+    transform: scale(1.05);
+}
+
+.card-option span {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 1.1rem; /* Увеличили шрифт */
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Поля формы */
+.form-group {
+    margin-bottom: 1.8rem;
+}
+
+.form-label {
+    display: block;
+    color: var(--text-secondary);
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
+}
+
+.form-input {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    background: var(--bg-primary);
+    border: 2px solid rgba(255, 0, 255, 0.3);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: var(--neon-pink);
+    box-shadow: 
+        0 0 20px rgba(255, 0, 255, 0.3),
+        inset 0 0 10px rgba(255, 0, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* Кнопки навигации формы */
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2.5rem;
+    gap: 1rem;
+}
+
+.form-btn {
+    background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+    border: none;
+    padding: 1.2rem 2rem;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    text-align: center;
+}
+
+.form-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+.form-btn:hover::before {
+    left: 100%;
+}
+
+.form-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 10px 25px rgba(255, 0, 255, 0.4),
+        0 5px 15px rgba(0, 255, 255, 0.3);
+}
+
+.form-btn.secondary {
+    background: transparent;
+    border: 2px solid var(--neon-blue);
+    color: var(--neon-blue);
+}
+
+.form-btn.secondary:hover {
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+}
+
+.form-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.form-btn:disabled::before {
+    display: none;
+}
+
+/* Уведомления об ошибках */
+.error-message {
+    color: #ff4444;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    animation: shake 0.5s ease-in-out;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Сообщение об успехе */
+.success-message {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.success-message h3 {
+    color: var(--neon-green);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 20px var(--neon-green);
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
+}
+
+.success-message p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .card-form-container {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+        max-width: 95%;
+    }
+    
+    .card-designs {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .card-preview-small {
+        width: 180px; /* Немного уменьшили для мобильных */
+        height: 112px;
+    }
+    
+    .form-progress {
+        margin-bottom: 2rem;
+    }
+    
+    .progress-step {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .form-navigation {
+        flex-direction: column;
+    }
+    
+    .form-btn {
+        padding: 1rem 1.5rem;
+    }
+    
+    .step-title {
+        font-size: 1.3rem;
+    }
+    
+    .card-option {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-form-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .step-title {
+        font-size: 1.2rem;
+    }
+    
+    .card-preview-small {
+        width: 160px;
+        height: 100px;
+    }
+    
+    .form-input {
+        padding: 0.8rem 1rem;
+    }
+    
+    .card-option {
+        padding: 1.2rem 0.5rem;
+    }
+    
+    .card-option span {
+        font-size: 1rem;
+    }
+    
+    .card-option.selected::after {
+        width: 25px;
+        height: 25px;
+        font-size: 1rem;
+        top: 10px;
+        right: 10px;
+    }
+}
+
+/* Специальные стили для очень маленьких экранов */
+@media (max-width: 360px) {
+    .card-preview-small {
+        width: 140px;
+        height: 87px;
+    }
+    
+    .card-option span {
+        font-size: 0.9rem;
+    }
+}

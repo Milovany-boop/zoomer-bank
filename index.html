@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoomer Bank - Банк нового поколения в Новосибирске</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="game/game.css">
+    <link rel="stylesheet" href="cards/card-styles.css">
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-container">
+           <a href="#main" class="logo">
+    <img src="images/logo.png" alt="Zoomer Bank" class="logo-image">
+</a>
+            <ul class="nav-menu">
+                <li><a href="#main">Главная</a></li>
+                <li><a href="#cards">Карты</a></li>
+                <li><a href="#game">Игра</a></li>
+                <li><a href="#about">О нас</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Главный экран -->
+ <!-- Альтернативная версия главного экрана -->
+<section id="main" class="full-width-background">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title neon-text">
+                БАНК НОВОГО<br>
+                ПОКОЛЕНИЯ
+            </h1>
+            <p class="hero-subtitle">Киберпанк стиль. Неоновые технологии. Будущее уже здесь.</p>
+            <button class="cta-button neon-button" onclick="openCardForm()">
+                ОФОРМИТЬ КАРТУ
+                <span class="button-glow"></span>
+            </button>
+        </div>
+        <div class="hero-visual">
+            <div class="card-preview">
+                <div class="card-preview-inner">
+                    <div class="card-chip"></div>
+                    <div class="card-stripe"></div>
+                    <div class="card-glow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Форма оформления карты -->
+    <div id="cardForm" class="card-form-overlay">
+        <div class="card-form-container">
+            <button class="close-form">×</button>
+            
+            <!-- Прогресс бар -->
+            <div class="form-progress">
+                <div class="progress-step active">1</div>
+                <div class="progress-step">2</div>
+                <div class="progress-step">3</div>
+                <div class="progress-step">4</div>
+            </div>
+
+          <!-- В разделе формы карты обновим шаг 1 -->
+<div id="step1" class="form-step active">
+    <h3 class="step-title">ВЫБЕРИТЕ ДИЗАЙН КАРТЫ</h3>
+    <div class="card-designs">
+        <div class="card-option" data-design="zombie">
+            <div class="card-preview-small">
+                <img src="images/cards/card-zombie.png" alt="Зомби карта" class="card-image">
+            </div>
+            <span>ЗОМБИ СТИЛЬ</span>
+        </div>
+        <div class="card-option" data-design="bone">
+            <div class="card-preview-small">
+                <img src="images/cards/card-bone.png" alt="Костяная карта" class="card-image">
+            </div>
+            <span>КОСТЯНОЙ СТИЛЬ</span>
+        </div>
+    </div>
+    <div class="form-navigation">
+        <button class="form-btn neon-button" data-action="next">ДАЛЕЕ</button>
+    </div>
+</div>
+
+            <!-- Шаг 2: Личные данные -->
+            <div id="step2" class="form-step">
+                <h3 class="step-title">ЛИЧНЫЕ ДАННЫЕ</h3>
+                <div class="form-group">
+                    <label class="form-label" for="fullName">ФИО *</label>
+                    <input type="text" id="fullName" class="form-input" placeholder="Иванов Иван Иванович">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="birthDate">Дата рождения *</label>
+                    <input type="date" id="birthDate" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="phone">Телефон *</label>
+                    <input type="tel" id="phone" class="form-input" placeholder="+7 (999) 999-99-99">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email *</label>
+                    <input type="email" id="email" class="form-input" placeholder="ivanov@mail.ru">
+                </div>
+                <div class="form-navigation">
+                    <button class="form-btn secondary neon-button" data-action="prev">НАЗАД</button>
+                    <button class="form-btn neon-button" data-action="next">ДАЛЕЕ</button>
+                </div>
+            </div>
+
+            <!-- Шаг 3: Паспортные данные -->
+            <div id="step3" class="form-step">
+                <h3 class="step-title">ПАСПОРТНЫЕ ДАННЫЕ</h3>
+                <div class="form-group">
+                    <label class="form-label" for="passportSeries">Серия паспорта *</label>
+                    <input type="text" id="passportSeries" class="form-input" placeholder="1234" maxlength="4">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="passportNumber">Номер паспорта *</label>
+                    <input type="text" id="passportNumber" class="form-input" placeholder="567890" maxlength="6">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="issueDate">Дата выдачи *</label>
+                    <input type="date" id="issueDate" class="form-input">
+                </div>
+                <div class="form-navigation">
+                    <button class="form-btn secondary neon-button" data-action="prev">НАЗАД</button>
+                    <button class="form-btn neon-button" data-action="next">ДАЛЕЕ</button>
+                </div>
+            </div>
+
+            <!-- Шаг 4: Подтверждение -->
+            <div id="step4" class="form-step">
+                <h3 class="step-title">ПОДТВЕРЖДЕНИЕ</h3>
+                <div style="background: var(--bg-primary); padding: 1rem; border-radius: 8px; margin-bottom: 2rem;">
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Проверьте правильность введенных данных.<br>
+                        Нажимая "ПОДТВЕРДИТЬ", вы соглашаетесь с условиями обслуживания.
+                    </p>
+                </div>
+                <div class="form-navigation">
+                    <button class="form-btn secondary neon-button" data-action="prev">НАЗАД</button>
+                    <button class="form-btn neon-button" data-action="submit">ПОДТВЕРДИТЬ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Игровая зона -->
+    <section id="game" class="game-section">
+        <div class="parallax-bg">
+            <div class="parallax-layer"></div>
+        </div>
+        
+        <div class="game-container">
+            <h2 class="game-title">ZOMBUCKS RUNNER</h2>
+            
+            <div class="game-stats">
+                <div class="stat-item">
+                    <div class="stat-label">СЧЕТ</div>
+                    <div class="stat-value" id="currentScore">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">ZOMBUCKS</div>
+                    <div class="stat-value" id="currentZomBucks">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">РЕКОРД</div>
+                    <div class="stat-value" id="bestScore">0</div>
+                </div>
+            </div>
+            
+            <canvas id="gameCanvas" width="800" height="400"></canvas>
+            
+            <div class="game-controls">
+                <button class="start-button neon-button" id="startGame">🚀 НАЧАТЬ ИГРУ</button>
+                <div class="controls-hint">
+                    <p>Нажми <kbd>ПРОБЕЛ</kbd> для прыжка • Собирай <span style="color:#00ff00">ZomBucks</span> для бонусов!</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--neon-blue);">
+                        💡 Каждые 100 очков увеличивают скорость!
+                    </p>
+                </div>
+            </div>
+            
+            <div id="gameOver" class="game-over">
+                <h3>💀 ИГРА ОКОНЧЕНА!</h3>
+                <div class="final-stats">
+                    <div class="final-stat">
+                        <span class="stat-label">Ваш счет: </span>
+                        <span id="finalScore" class="high-score">0</span>
+                    </div>
+                    <div class="final-stat">
+                        <span class="stat-label">Собрано ZomBucks: </span>
+                        <span id="finalZomBucks" class="high-score">0</span>
+                    </div>
+                    <div class="final-stat">
+                        <span class="stat-label">Рекорд: </span>
+                        <span id="highScore" class="high-score">0</span>
+                    </div>
+                </div>
+                <button class="start-button neon-button">🎮 ИГРАТЬ СНОВА</button>
+                <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                    Нажми ПРОБЕЛ или кликни для перезапуска
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция о банке -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <h2 class="about-title">ZOOMER BANK</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Первый в России банк с киберпанк-философией. Мы объединяем передовые технологии и неоновую эстетику для создания банковских услуг нового поколения.</p>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Мгновенные переводы</h3>
+                            <p>Переводы между клиентами Zoomer Bank за 0.1 секунду</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎮</div>
+                            <h3>Игровые бонусы</h3>
+                            <p>Зарабатывай ZomBucks в игре и используй их для получения кэшбэка</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔒</div>
+                            <h3>Кибербезопасность</h3>
+                            <p>Защита на уровне блокчейн-технологий</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Zoomer Bank" class="logo-image" style="height: 50px;">
+            </div>
+            <div class="footer-info">
+                <p>© 2024 Zoomer Bank. Все права защищены.</p>
+                <p>Контактный центр: 8-800-ZOOMER-0</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="game/game.js"></script>
+    <script src="cards/card-form.js"></script>
+</body>
+</html>
